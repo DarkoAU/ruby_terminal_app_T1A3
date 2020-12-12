@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 require_relative 'methods'
 
 puts "Welcome to the Melbourne Import FOB calculator"
@@ -6,16 +6,12 @@ puts "This calculator will allow you to enter your cargo volume, \nthen determin
 "\n"
 puts "Please let us know your cargo volume"
 
-load_port = 0
-lcl_vol = 0
-no_20_container = 0
-no_40_containers = 0
-
 cargo_volume = gets.chomp.to_f
 
-puts shipping_mode(cargo_volume)
+puts calculate_containers_number(cargo_volume)
 
 puts "now please tell us what is the load port / origin of your goods"
 
-load_port = gets.chomp.downcase
+load_port = gets.chomp.capitalize
 
+origin_port(load_port, "./docs/pricing.csv")
