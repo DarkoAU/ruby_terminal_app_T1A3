@@ -13,10 +13,12 @@ while true
                 banner
                 puts "Please provide total cargo volume"
                 cargo_volume = gets.chomp.to_f
-                puts calculate_containers_number(cargo_volume) 
+                containers = calculate_containers_number(cargo_volume)
                 puts "Now, please tell us your origin port"
-                load_port = gets.chomp.upcase
-                puts origin_port(load_port, "./docs/pricing.csv")
+                load_port = gets.chomp.capitalize
+                port = origin_port(load_port, "./docs/pricing.csv")
+                cost = calculate_shipping_costs(containers, port)
+                puts "Total cost for your shipping will be USD #{cost}"
                 puts "do you want to do another caculation? Press 1 for yes, and press 2 to go back"
                 shipping_calculator_choice = gets.chomp.to_i
                 if shipping_calculator_choice == 1

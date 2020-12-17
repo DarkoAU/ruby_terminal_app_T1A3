@@ -65,6 +65,8 @@ def calculate_containers_number(volume)
     containers = {LCL: 0, twenty_foot: 0, fourty_foot: 0}
     if volume < 15
         containers[:LCL] += volume
+        containers.delete_if { |key, value| value == 0}
+        puts "   The most cost effective way to ship this cosningment is as #{containers}"
         return containers
     end
     
@@ -77,21 +79,34 @@ def calculate_containers_number(volume)
                 volume -= 50
             end
         end  
-    return containers
+    containers.delete_if { |key, value| value == 0}
     puts "   The most cost effective way to ship this cosningment is as #{containers}"
+    return containers
+    
 end
 
 def origin_port(name, path)
     pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
     row = pricing.find { |row| row.include? name} 
+    puts "For this port, the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
     return row
-    puts "the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
+    #rescue 
 end
 
-def calculate_mode(hash)
+def calculate_shipping_costs(containers, port)
+    if containers[:LCL] 
+        total_cost = containers[:LCL].to_f * port[3].to_f
+    else 
+        total_cost = (containers[:twenty_foot].to_f * port[1].to_f) + (containers[:fourty_foot].to_f * port[2].to_f)
+
+    end
+    return total_cost.to_f
+end
+
+# def calculate_mode(hash)
     
-end
+# end
 
-def calculate_container_cost(hash)
+# def calculate_container_cost(hash)
 
-end
+# end
