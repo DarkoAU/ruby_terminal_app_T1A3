@@ -19,24 +19,16 @@ def banner
     puts "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 end
 
-def menu_select
-    system "clear"
-    banner
-    puts "Press 1 for instructions on how to use this calculator"
-    puts "Press 2 to run the calculator"
-    puts "Press 3 to exit"
-    input = gets.chomp.to_i
-    return input
-end
-
 def quit 
     loop do 
-        puts "Are you sure you want to quit? (Y or N)"
+        puts "Are you sure you want to quit? (Enter Y to quit, Enter any other button to return to Main Menu)"
         response = gets.chomp.downcase
         if response == 'y'
             puts "Thank you for using our calculator and we hope to see you again soon!"
+            system "clear"
             exit
         else
+            system "clear"
             break
         end
     end
@@ -46,19 +38,18 @@ def how_to_use
     system "clear"
     banner
     puts "   1. Enter your cargo volume. This will help us determine whether you will require to ship your goods as Less than Container Load (LCL) or as Full Container Load (FCL)"
-    puts "\n   2. Enter your load port. Supported ports are: "
+    puts "\n                ""*    LCL (Less than Container Load) is the recommended shipping method for any cargo under 15 cubic meters in volume."
+    puts "\n                ""*    20' Container Load (FCL) is the recommended shipping method for any cargo between 15 cubic meters and 25 cubic meters in volume."
+    puts "\n                ""*    40' Container Load (FCL) is the recommended shipping method for any cargo between 25 cubic meters and 50 cubic meters in volume."
+    puts "\n\n   2. Enter your load port. Supported ports are: "
     pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
         pricing.each do |row| 
-                puts "\n                  "" - #{row[0]}"
+                puts "\n                  "" - #{row[0]}" 
         end
     puts "\n   3. The calculator will display your total price based on the provided cargo volume"
-    puts "\n\nDo you want to return to the main menu? (Type 'Y' and press enter)"
+    puts "\n\nEnter any key to return to main menu"
     input = gets.chomp.downcase
-        if input == "y"
-            menu_select
-        else
-            puts "you have entered an invalid input"
-        end
+    system "clear"
 end
 
 def calculate_containers_number(volume)
@@ -66,7 +57,7 @@ def calculate_containers_number(volume)
     if volume < 15
         containers[:LCL] += volume
         containers.delete_if { |key, value| value == 0}
-        puts "   Based on the volume you have provided, the most cost effective way to ship this cosningment is as #{containers}"
+        puts "\n         >>>>  Based on the volume you have provided (#{containers[:LCL]} cbm), the most cost effective method for your shipment is LCL (Less than Container Load) <<<<"
         return containers
     end
     
@@ -80,7 +71,11 @@ def calculate_containers_number(volume)
             end
         end  
     containers.delete_if { |key, value| value == 0}
-    puts "\n   The most cost effective way to ship this cosningment is as #{containers}"
+    puts "\n\n   >>>> Based on the volume you have provided, you will require the following amount of Full Container Loads: <<<<"
+    containers.each do |key, value| 
+       puts "       " "\n   * #{key} : #{value}"
+    end
+    # puts "\n   The most cost effective way to ship this cosningment is as #{containers}"
     return containers
     
 end
@@ -90,7 +85,7 @@ def origin_port(path)
         load_port = gets.chomp.capitalize
         pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
         row = pricing.find { |row| row.include? load_port} 
-        puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
+        puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the  freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
         return row
     rescue NoMethodError
         puts "You have entered and invalid Port. A list of supported ports can be found in the instructions menu.\n\nPlease enter a valid Origin Port:"
@@ -107,11 +102,3 @@ def calculate_shipping_costs(containers, port)
     end
     return total_cost.to_f
 end
-
-# def calculate_mode(hash)
-    
-# end
-
-# def calculate_container_cost(hash)
-
-# end

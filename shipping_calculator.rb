@@ -2,52 +2,42 @@ require 'csv'
 require 'tty-prompt'
 require_relative 'methods'
 
+prompt = TTY::Prompt.new
+
 while true
-    case menu_select
-        when 1 
-            how_to_use
-        when 2
-            shipping_calculator_running = true
-            while shipping_calculator_running
+    system "clear"
+    loop do
+        banner
+        menu_select = prompt.select("Welcome to the Melbourne Import Calculator. Please select from one of the folllowing options: \n\n", ['Instruction to Use', 'Run the Shipping Calculator', 'Quit Application'])
+        case menu_select
+            when 'Instruction to Use'
+                how_to_use
+            when 'Run the Shipping Calculator'
+                shipping_calculator_running = true
+                while shipping_calculator_running
+                    system "clear"
+                    banner
+                    puts "Please provide total cargo volume"
+                    cargo_volume = gets.chomp.to_f
+                    containers = calculate_containers_number(cargo_volume)
+                    puts "\n\n3Now, please tell us your origin port"
+                    port = origin_port("./docs/pricing.csv")
+                    cost = calculate_shipping_costs(containers, port)
+                    puts "\nThe total Freight cost for your shipment of will be US$ #{cost}"
+                    puts "\n\ndo you want to do another caculation? Press 1 for yes, and press 2 to go back"
+                    shipping_calculator_choice = gets.chomp.to_i
+                    if shipping_calculator_choice == 1
+                        shipping_calculator_running = true
+                    else 
+                        shipping_calculator_running = false
+                        system "clear"
+                    end
+                end
+            when 'Quit Application'
                 system "clear"
                 banner
-                puts "Please provide total cargo volume"
-                cargo_volume = gets.chomp.to_f
-                containers = calculate_containers_number(cargo_volume)
-                puts "Now, please tell us your origin port"
-                port = origin_port("./docs/pricing.csv")
-                cost = calculate_shipping_costs(containers, port)
-                puts "\nTotal cost for your shipping will be USD #{cost}"
-                puts "\n\ndo you want to do another caculation? Press 1 for yes, and press 2 to go back"
-                shipping_calculator_choice = gets.chomp.to_i
-                if shipping_calculator_choice == 1
-                    shipping_calculator_running = true
-                else 
-                    shipping_calculator_running = false
-                end
-            end
-        when 3
-            system "clear"
-            banner
-            quit
+                quit
+        end
     end
 end
-
-
-
-# puts "\n\nWelcome to the Melbourne Import FOB calculator"
-# puts "This calculator will allow you to enter your cargo volume, \nthen determine whether you will need to use a containerized service or ship \nas less than container load"
-# "\n"
-# puts "Please let us know your cargo volume"
-
-# cargo_volume = gets.chomp.to_f
-
-# puts calculate_containers_number(cargo_volume)
-
-
-# puts "now please tell us what is the load port / origin of your goods"
-
-# load_port = gets.chomp.capitalize
-
-# origin_port(load_port, "./docs/pricing.csv")
 
