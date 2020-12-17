@@ -88,10 +88,10 @@ def origin_port(name, path)
     puts "the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
 end
 
-# def calculate_mode(hash)
+def calculate_mode(hash)
+    
+end
 
-# end
+def calculate_container_cost(hash)
 
-# def calculate_container_cost(hash)
-
-# end
+end

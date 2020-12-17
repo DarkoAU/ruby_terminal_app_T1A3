@@ -7,14 +7,24 @@ while true
         when 1 
             how_to_use
         when 2
-            system "clear"
-            banner
-            puts "Please provide total cargo volume"
-            cargo_volume = gets.chomp.to_f
-            calculate_containers_number(cargo_volume) 
-            puts "Now, please tell us your origin port"
-            load_port = gets.chomp.upcase
-            origin_port(load_port, "./docs/pricing.csv")
+            shipping_calculator_running = true
+            while shipping_calculator_running
+                system "clear"
+                banner
+                puts "Please provide total cargo volume"
+                cargo_volume = gets.chomp.to_f
+                puts calculate_containers_number(cargo_volume) 
+                puts "Now, please tell us your origin port"
+                load_port = gets.chomp.upcase
+                puts origin_port(load_port, "./docs/pricing.csv")
+                puts "do you want to do another caculation? Press 1 for yes, and press 2 to go back"
+                shipping_calculator_choice = gets.chomp.to_i
+                if shipping_calculator_choice == 1
+                    shipping_calculator_running = true
+                else 
+                    shipping_calculator_running = false
+                end
+            end
         when 3
             system "clear"
             banner
