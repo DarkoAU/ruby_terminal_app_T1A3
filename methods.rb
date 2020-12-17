@@ -66,7 +66,7 @@ def calculate_containers_number(volume)
     if volume < 15
         containers[:LCL] += volume
         containers.delete_if { |key, value| value == 0}
-        puts "   The most cost effective way to ship this cosningment is as #{containers}"
+        puts "   Based on the volume you have provided, the most cost effective way to ship this cosningment is as #{containers}"
         return containers
     end
     
@@ -80,17 +80,22 @@ def calculate_containers_number(volume)
             end
         end  
     containers.delete_if { |key, value| value == 0}
-    puts "   The most cost effective way to ship this cosningment is as #{containers}"
+    puts "\n   The most cost effective way to ship this cosningment is as #{containers}"
     return containers
     
 end
 
-def origin_port(name, path)
-    pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
-    row = pricing.find { |row| row.include? name} 
-    puts "For this port, the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
-    return row
-    #rescue 
+def origin_port(path)
+    begin 
+        load_port = gets.chomp.capitalize
+        pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
+        row = pricing.find { |row| row.include? load_port} 
+        puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
+        return row
+    rescue NoMethodError
+        puts "You have entered and invalid Port. A list of supported ports can be found in the instructions menu.\n\nPlease enter a valid Origin Port:"
+        retry 
+    end
 end
 
 def calculate_shipping_costs(containers, port)
