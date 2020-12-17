@@ -4,23 +4,22 @@ require_relative 'methods'
 
 while true
     case menu_select
-    when 1 
-        how_to_use
-    when 2
-        #system "clear"
-        banner
-        puts "Please provide total cargo volume"
-        cargo_volume = gets.chomp.to_f
-        calculate_containers_number(cargo_volume) 
-        puts "Now, please tell us your origin port"
-        load_port = gets.chomp.upcase
-        origin_port(load_port, "./docs/pricing.csv")
-    when 3
-        system "clear"
-        banner
-        quit
+        when 1 
+            how_to_use
+        when 2
+            system "clear"
+            banner
+            puts "Please provide total cargo volume"
+            cargo_volume = gets.chomp.to_f
+            calculate_containers_number(cargo_volume) 
+            puts "Now, please tell us your origin port"
+            load_port = gets.chomp.upcase
+            origin_port(load_port, "./docs/pricing.csv")
+        when 3
+            system "clear"
+            banner
+            quit
     end
-
 end
 
 

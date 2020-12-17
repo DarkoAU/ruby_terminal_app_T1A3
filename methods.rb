@@ -30,18 +30,20 @@ def menu_select
 end
 
 def quit 
-    puts "Are you sure you want to quit?"
-    response = gets.chomp
-    while response.downcase == "yes"
-        puts "Thank you for using our calculator and we hope to see you again soon!"
-        exit
-    begin
-        puts "invalid input"
-    rescue => exception
+    loop do 
+        puts "Are you sure you want to quit? (Y or N)"
+        response = gets.chomp.downcase
+        if response == 'y'
+            puts "Thank you for using our calculator and we hope to see you again soon!"
+            exit
+        else
+            break
+        end
+    end
 end
 
 def how_to_use 
-    #system "clear"
+    system "clear"
     banner
     puts "   1. Enter your cargo volume. This will help us determine whether you will require to ship your goods as Less than Container Load (LCL) or as Full Container Load (FCL)"
     puts "\n   2. Enter your load port. Supported ports are: "
@@ -53,9 +55,9 @@ def how_to_use
     puts "\n\nDo you want to return to the main menu? (Type 'Y' and press enter)"
     input = gets.chomp.downcase
         if input == "y"
-        menu_select
+            menu_select
         else
-         puts "you have entered an invalid input"
+            puts "you have entered an invalid input"
         end
 end
 
@@ -86,10 +88,10 @@ def origin_port(name, path)
     puts "the freight price per 20' container is US$#{row[1]}, the price freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
 end
 
-def calculate_mode(hash)
+# def calculate_mode(hash)
 
-end
+# end
 
-def calculate_container_cost(hash)
+# def calculate_container_cost(hash)
 
-end 
+# end
