@@ -82,10 +82,10 @@ end
 
 def origin_port(path)
     begin 
-        load_port = gets.chomp.capitalize
+        load_port = gets.chomp.split.map(&:capitalize).join(' ')
         pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
         row = pricing.find { |row| row.include? load_port} 
-        puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the  freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
+        puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
         return row
     rescue NoMethodError
         puts "You have entered and invalid Port. A list of supported ports can be found in the instructions menu.\n\nPlease enter a valid Origin Port:"

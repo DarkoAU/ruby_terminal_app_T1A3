@@ -20,3 +20,10 @@ describe "calculate_containers_number" do
         expect(containers_hash[:fourty_foot]).to eq(2)
      end
 end
+
+describe "calculate_shipping_costs" do
+   it 'should return the total cost for shipping mode times origin port cost' do 
+      total_cost = calculate_containers_number(2.3) * origin_port(hamburg)
+      expect(total_cost).t eq(161)
+   end
+end
