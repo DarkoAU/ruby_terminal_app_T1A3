@@ -21,9 +21,11 @@ describe "calculate_containers_number" do
      end
 end
 
-# describe "calculate_shipping_costs" do
-#    it 'should return the total cost for shipping mode times origin port cost' do 
-#       calculate_containers_number(2.3).values * origin_port('Hamburg')
-#       expect(total_cost).to eq(161.00)
-#    end
-# end
+describe "calculate_shipping_costs" do
+   it 'should return the total cost for shipping mode times origin port cost' do 
+      containers = calculate_containers_number(2.3) 
+      port = ['Hamburg',1850,3700,70]
+      total_cost = calculate_shipping_costs(containers, port)
+      expect(total_cost).to eq(161.00)
+   end
+end

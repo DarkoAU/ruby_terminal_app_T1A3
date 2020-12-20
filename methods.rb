@@ -75,15 +75,15 @@ def calculate_containers_number(volume)
     containers.each do |key, value| 
        puts "       " "\n   * #{key} : #{value}"
     end
-    # puts "\n   The most cost effective way to ship this cosningment is as #{containers}"
     return containers
     
 end
 
+
 def origin_port(path)
     begin 
         load_port = gets.chomp.split.map(&:capitalize).join(' ')
-        pricing = CSV.parse(File.read("./docs/pricing.csv", headers: true))
+        pricing = CSV.parse(File.read(path, headers: true))
         row = pricing.find { |row| row.include? load_port} 
         puts "\nFor this port, the freight price per 20' container is US$#{row[1]}, the freight price per 40' container is US$#{row[2]}, and the LCL price per cubic meter is US$#{row[3]}"
         return row
