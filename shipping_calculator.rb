@@ -20,7 +20,7 @@ while true
                     puts "Please provide total cargo volume"
                     cargo_volume = gets.chomp.to_f
                     containers = calculate_containers_number(cargo_volume)
-                    puts "\n\n3Now, please tell us your origin port"
+                    puts "\n\nNow, please tell us your origin port"
                     port = origin_port("./docs/pricing.csv")
                     cost = calculate_shipping_costs(containers, port)
                     puts "\nThe total Freight cost for your shipment of will be US$ #{cost}"
