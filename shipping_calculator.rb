@@ -11,6 +11,7 @@ while true
         case menu_select
             when 'Instruction to Use'
                 how_to_use
+                sys_clear
             when 'Run the Shipping Calculator'
                 shipping_calculator_running = true
                 while shipping_calculator_running
@@ -19,15 +20,16 @@ while true
                     cargo_volume = gets.chomp.to_f
                     containers = calculate_containers_number(cargo_volume)
                     puts "\n\nNow, please tell us your origin port"
-                    port = origin_port("./docs/pricing.csv")
+                    port = origin_port('./pricing/pricing.csv')
                     cost = calculate_shipping_costs(containers, port)
-                    puts "\nThe total Freight cost for your shipment of will be US$ #{cost}"
-                    puts "\n\ndo you want to do another caculation? Press 1 for yes, and press 2 to go back"
+                    puts "\n\n\n                    *** The TOTAL FREIGHT COST for your shipment will be US$ #{cost} ***"
+                    puts "\n\n\n\nDo you want to do another caculation? Enter 1 for yes, Enter any other key to go back"
                     shipping_calculator_choice = gets.chomp.to_i
                     if shipping_calculator_choice == 1
                         shipping_calculator_running = true
                     else 
                         shipping_calculator_running = false
+                        sys_clear
                     end
                 end
             when 'Quit Application'
