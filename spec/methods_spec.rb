@@ -35,7 +35,7 @@ describe "calculate_shipping_costs" do
       expect(total_cost).to eq(2350.00)
    end
    it 'should return 3500.00 for 43 cbm from Durban Port' do 
-      containers = calculate_containers_number(24)
+      containers = calculate_containers_number(43)
       port = ['Durban',1750,3500,94]
       total_cost = calculate_shipping_costs(containers, port)
       expect(total_cost).to eq(3500.00)
