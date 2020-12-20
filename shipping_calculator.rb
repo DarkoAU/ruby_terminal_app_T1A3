@@ -5,9 +5,8 @@ require_relative 'methods'
 prompt = TTY::Prompt.new
 
 while true
-    system "clear"
+    sys_clear 
     loop do
-        banner
         menu_select = prompt.select("Welcome to the Melbourne Import Calculator. Please select from one of the folllowing options: \n\n", ['Instruction to Use', 'Run the Shipping Calculator', 'Quit Application'])
         case menu_select
             when 'Instruction to Use'
@@ -15,8 +14,7 @@ while true
             when 'Run the Shipping Calculator'
                 shipping_calculator_running = true
                 while shipping_calculator_running
-                    system "clear"
-                    banner
+                    sys_clear 
                     puts "Please provide total cargo volume"
                     cargo_volume = gets.chomp.to_f
                     containers = calculate_containers_number(cargo_volume)
@@ -30,12 +28,10 @@ while true
                         shipping_calculator_running = true
                     else 
                         shipping_calculator_running = false
-                        system "clear"
                     end
                 end
             when 'Quit Application'
-                system "clear"
-                banner
+                sys_clear 
                 quit
         end
     end
