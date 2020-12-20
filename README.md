@@ -4,7 +4,7 @@
 
 [GitHub Repository](https://github.com/DarkoAU/ruby_terminal_app_T1A3)
 
-##Software Development Plan (SDP)
+## Software Development Plan (SDP)
 
 This application is designed to assist importers in choosing most cost effective shipping options based on cargo volume and provide them with the total freight costs for the shipment based on the amount of cargo / full container loads applicable. 
 
