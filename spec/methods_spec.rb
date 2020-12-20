@@ -40,4 +40,10 @@ describe "calculate_shipping_costs" do
       total_cost = calculate_shipping_costs(containers, port)
       expect(total_cost).to eq(3500.00)
    end
+   it 'should return 12250.00 for 120 cbm from Shanghai Port' do 
+      containers = calculate_containers_number(120)
+      port = ['Shanghai',2450,4900,61]
+      total_cost = calculate_shipping_costs(containers, port)
+      expect(total_cost).to eq(12250.00)
+   end
 end
