@@ -1,0 +1,98 @@
+load_port,20',40',LCL
+Chittagong,1850,3700,78
+Antwerp,2000,4000,66
+Santos,1600,3200,108
+Phnom Penh,1400,2800,73
+Montreal,1700,3400,181
+Toronto,1700,3400,181
+Vancouver,1500,3000,141
+Dalian,2200,4400,107
+Foshan,2200,4400,104
+Fuzhou,2250,4500,97
+Guangzhou,2250,4500,94
+Huangpu,2300,4600,73
+Jiangmen,2300,4600,106
+Nanjing,2400,4800,194
+Nansha,2400,4800,61
+Ningbo,2450,4900,57
+Qingdao,2450,4900,57
+Shanghai,2450,4900,61
+Shantou,2600,5200,119
+Shantou,2600,5200,123
+Shenzhen,2350,4700,91
+Shunde,2350,4700,184
+Tianjin,2600,5200,63
+Xiamen,2350,4700,58
+Xiaolan,2350,4700,105
+Zhongshan,2350,4700,102
+Zhuhai,2600,5200,113
+Aarhus,2200,4400,88
+Copenhagen,2200,4400,93
+Alexandria,1500,3000,102
+Helsinki,2200,4400,106
+Le Havre,1800,3600,101
+Marseille,1800,3600,128
+Bremen,1850,3700,70
+Hamburg,1850,3700,70
+Hong Kong,2350,4700,56
+Bangalore,1900,3800,113
+Calcutta,1900,3800,90
+Chennai,1950,2900,78
+Cochin,1950,3900,90
+New Delhi,1800,3600,108
+Nhava Sheva,1800,3600,63
+Tuticorin,1950,3900,95
+Jakarta,1600,3200,60
+Semarang,1650,3300,77
+Surabaya,1650,3300,70
+Dublin,2400,4800,122
+Haifa,1900,3800,104
+Genoa,2100,4200,120
+La Spezia,2100,4200,120
+Kobe,1200,2400,57
+Nagoya,1250,2500,78
+Osaka,1250,2500,57
+Tokyo,1250,2500,57
+Yokohama,1200,2400,57
+Busan,1100,2200,50
+Pasir Gudang,1600,3200,55
+Penang,1600,3200,52
+Port Klang,1500,3000,45
+Tanjung Pelapas,1550,3100,66
+Yangon,1600,3200,71
+Rotterdam,2100,4200,72
+Auckland,850,1700,28
+Lyttelton,900,1800,56
+Wellington,900,1800,80
+Karachi,1950,2900,73
+Cebu,950,1900,73
+Manila,900,1800,74
+Gdynia,2300,4600,116
+Leixoes,2200,4200,120
+St. Petersburg,2450,4900,199
+Singapore,2100,4200,43
+Koper,2300,4600,119
+Durban,1750,3500,94
+Barcelona,2200,4400,92
+Valencia,2200,4400,92
+Colombo,1950,2900,71
+Gothenburg,2200,4400,144
+Kaohsiung,2100,4200,63
+Keelung,2150,4300,63
+Bangkok,1650,3300,61
+Ambarli,2300,3600,97
+Istanbul,2200,4200,97
+Dubai,1650,3300,97
+London,2300,4600,91
+Southampton,2300,4600,91
+Charleston,1300,2600,122
+Los Angeles,1150,2300,115
+Miami,1500,3000,147
+New York,1400,2800,112
+Norfolk,1150,2300,127
+Philadelphia,1400,2800,122
+San Francisco,1200,2400,120
+Seattle,1250,2500,140
+Danang,2100,4200,69
+Haiphong,2100,4200,54
+Ho Chi Minh,2050,4100,47
